@@ -1,0 +1,114 @@
+\documentclass[11pt,a4paper,oneside]{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage[russian]{olymp}
+
+\usepackage{graphics}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{epigraph}
+\usepackage[T1]{fontenc}
+\usepackage{upquote}
+
+\newcommand{\qo}{\textquotesingle}
+\newcommand{\qq}{\textquotesingle~}
+
+\contest{ACM ICPC Kyrgyzstan Subregional 2015}{Бишкек}{1 ноября 2015 года}    
+
+\binoppenalty=10000
+\relpenalty=10000
+\exhyphenpenalty=10000
+
+\renewcommand{\t}{\texttt}
+
+\createsection{\Note}{Примечание}
+
+\renewcommand{\defaultmemorylimit}{256 мегабайт}
+
+\begin{document}
+
+\begin{problem}{AB-строки}{1 секунда}{32 мегабайта}
+
+
+
+Рассмотрим строки,  состоящие из символов \qo A\qq  и \qo B\qq латинского алфавита. 
+
+\textit{Подстрока} строки S - это строка, являющаяся непустой связной частью $S$.  Например, \qo A\qo, $~$\qo B\qo, \qo AB\qo, \qo BA \qo, \qo ABA\qq -- все различные подстроки строки \qo ABA\qq.
+Заметим, что  любая строка является также своей подстрокой.
+
+Подстроки \qo AA\qo, \qo BB\qo, \qo ABAB\qq называются \textit{специальными}. 
+
+\textit{Преобразованием} над строкой $S$ назовем любую из следующих 2-ух операций:
+\begin{enumerate}
+\item Удаление специальной подстроки  из любой позиции $S$ (включая начало и конец). 
+\item Добавление специальной подстроки   в любую позицию $S$. 
+\end{enumerate}
+
+Например, \qo A\textbf{ABAB}B\qq $\to$ \qo AB\qq, \qo \textbf{AA}B\qq $\to$ \qo B\qo,  \textbf{\qo BB\qq} $\to$ \qo\qq -- преобразования первого типа (заметим, что в результате преобразования может получаться пустая строка). \qo AB\qq $\to$ \qo A\textbf{BB}B\qo, \qo BA\qq $\to$ \qo BA\textbf{ABAB}\qq , \qo\qq $\to$  \qo AA\qq -- преобразования второго типа.
+
+Даны 2 строки, $S_1$ и $S_2$,  состоящие из символов \qo A\qq и \qo B\qq латинского алфавита. 
+Требуется определить, можно ли получить строку $S_2$ из строки $S_1$, применив некоторое конечное число (возможно, 0) преобразований над строкой $S_1$. Можно применять преобразования как первого, так и второго типа, в произвольном порядке.
+
+
+\InputFile
+
+В первой строке входных данных записано число $1 \le N \le 20$ - количество тестов.
+В каждой из следующих $N$ строках через пробел записаны 2 непустые строки: $S_1$ и $S_2$ состоящие из символов \qo A\qq и \qo B\qq латинского алфавита.
+Cуммарная длина строк $S_1$ и $S_2$ в каждом тесте  не превосходит $10^6$.
+\OutputFile
+
+Для каждого теста на отдельной строке выведите слово \texttt{Yes}, если из строки $S_1$ т можно получить строку $S_2$, применив некоторое конечное число (возможно, 0) преобразований (в произвольном порядке), и \texttt{No} в противном случае.
+
+\Examples
+
+\begin{example}%
+\exmp{
+4
+ABAB AABB
+AABABBBBBA AAAA
+AA AB
+ABABA BABA
+}{
+Yes
+Yes
+No
+No
+}%
+\end{example}
+
+\vspace{0.3cm}
+\medskip\noindent
+\textbf{Пояснение к примерам.}
+
+В первом примере из строки \qo ABAB\qq можно получить строку \qo AABB \qq, применив последовательно преобразования 1)\qo \textbf{ABAB} \qq $\to$ \qo \qq, 2)\qo \qq $\to$ \textbf{AA},
+3) \qo AA \qq $\to$ \qo AA\textbf{BB} \qq. 
+
+Во втором примере из строки \qo AABABBBBBA\qq можно получить строку \qo AAAA\qq, например, применив преобразования  следующим образом:
+1) \qo A\textbf{ABAB}BBA\qq $\to$ 'ABBAABBA'
+2) \qo A\textbf{BB}A \qq $\to$ \qo AA\qo 
+3) \qo AA\qq $\to$ \qo AA\textbf{AA}\qq
+
+В последних двух примерах из первой строки невозможно получить вторую. 
+
+
+
+
+
+\vspace{1.0cm}
+\hfill \textit{Автор задачи: Евгений Балай}
+\medskip\noindent
+
+
+
+
+\end{problem}
+
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
