@@ -1,6 +1,6 @@
 The folder "examples" contains checkers for my problems for olymp.krsu.edu.kg.
 
-Olymp.krsu.edu.kg is running on linux. So, if your system is not windows, use cross-compilers to compiler a checker, e.g:
+Olymp.krsu.edu.kg is running on windows. So, if your system is not windows, use cross-compilers to compiler a checker, e.g:
 
 i586-mingw32msvc-g++ checker.cpp -o checker.exe
 
